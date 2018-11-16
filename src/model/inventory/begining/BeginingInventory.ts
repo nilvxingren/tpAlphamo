@@ -12,4 +12,5 @@ export default class BeginingInventory extends Entity {
   taxExcBeginingCostPrice: number = 0
   taxExcBeginingAmount: number = 0
   editable: boolean = false
+  beginingDate: Nullable<Date>
 }

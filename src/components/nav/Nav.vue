@@ -27,7 +27,8 @@ export default {
     loaded: {
       type: Boolean,
       default: false
-    }
+    },
+    navMenu: Array
   },
   data() {
     return {
@@ -38,7 +39,7 @@ export default {
     }
   },
   mounted() {
-    // this.open = false
+    // this.openable = false
   },
   watch: {
     loaded(value) {
@@ -48,6 +49,19 @@ export default {
         if (this.$route.path === '/home') {
           this.isHome = true
           this.open = false
+        } else {
+          if (this.navMenu) {
+            let filter = this.navMenu.filter((item) => {
+              return item.url === this.$route.path
+            })
+            if (filter.length <= 0) {
+              this.isHome = true
+              this.open = false
+            } else {
+              this.isHome = false
+              this.open = true
+            }
+          }
         }
         this.matchRoute(this.$route)
       }
@@ -117,12 +131,10 @@ export default {
     },
     addGroup(group) {
       this.groups.push(group)
-    }
-    ,
+    },    
     removeGroup(group) {
       this.groups.splice(this.groups.indexOf(group), 1)
-    }
-    ,
+    },    
     onSelectGroup(group) {
       this.groups.forEach(value => {
         if (value !== group) {
@@ -136,8 +148,7 @@ export default {
         this.open = true
       }
       this.doOpen(this.open)
-    }
-    ,
+    },    
     onSelectItem(item) {
       this.groups.forEach(group => {
         group.items.forEach(value => {
@@ -147,8 +158,7 @@ export default {
         })
       })
       item.selected = true
-    }
-    ,
+    },    
     handleTrigger() {
       // if (this.$route.path === '/home') {
       //   this.open = false

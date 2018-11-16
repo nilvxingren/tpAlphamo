@@ -2,6 +2,8 @@ import StandardEntity from 'model/entity/StandardEntity'
 import SkuCategory from 'model/basicdata/sku/SkuCategory'
 import SkuMunit from 'model/basicdata/sku/SkuMunit'
 import Ucn from 'model/entity/Ucn'
+import SkuFormula from 'model/basicdata/sku/SkuFormula'
+import SkuFormulaLog from 'model/basicdata/sku/SkuFormulaLog'
 
 export default class Sku extends StandardEntity {
   // 条码
@@ -65,4 +67,16 @@ export default class Sku extends StandardEntity {
   taxExcRefPurchasePrice: number = 0
   // 税收分类编码
   taxClassification: Nullable<string>
+  // 商品类型 NORMAL,FORMULA
+  type: Nullable<string>
+  // 配方单位
+  fmunit: Nullable<string>
+  // 配方比例
+  fmunitTimes: number = 0
+  // 配方商品列表
+  skuFormulaList: SkuFormula[] = []
+  // 商品配方修改记录
+  skuFormulaLoglist: SkuFormulaLog[] = []
+  // 是否支持配方单位
+  skuFormulaSupported: boolean = false
 }

@@ -51,6 +51,7 @@ import SupplierList from 'pages/supplier/SupplierList.vue'
 import WarehouseList from 'pages/warehouse/WarehouseList.vue'
 import LogisticsList from 'pages/logistics/LogisticsList.vue'
 import SkuList from 'pages/sku/SkuList.vue'
+// import FormulaSkuList from 'pages/formulaSku/FormulaSkuList.vue'
 import BeginingInventoryList from 'pages/begininginventory/List.vue'
 import SkuCategory from 'pages/sku/SkuCategoryList.vue'
 import SkuDetail from 'pages/sku/SkuDetail.vue'
@@ -555,6 +556,13 @@ const router = new Router({
           component: SkuList,
           meta: {keepAlive: true}
         },
+        // {
+        //   path: '/formulaSkuList',
+        //   name: 'formulaSkuList',
+        //   alias: '',
+        //   // component: resolve => require(['pages/formulaSku/formulaSkuList.vue'], resolve)
+        //   component: FormulaSkuList
+        // },
         {
           path: '/beginingInventoryList',
           name: 'beginingInventoryList',

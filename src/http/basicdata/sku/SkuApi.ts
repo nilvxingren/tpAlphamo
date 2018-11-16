@@ -120,11 +120,26 @@ export default class SkuApi {
   }
 
   /**
-   * 更新商户下所有商品的smartCodes，便宜字母查询
+   * 更新商户下所有商品的smartCodes，字母查询
    *
    */
   static updateAll (): Promise<Response<void>> {
     return ApiClient.server().get(`/{merchant}/sku/updateAll`).then((res) => {
+      return res.data
+    })
+  }
+
+  /**
+   * 批量更换配方
+   *
+   */
+  static updateSkuFormula (oldSku: string, newSku: string): Promise<Response<number>> {
+    return ApiClient.server().post(`/{merchant}/sku/updateSkuFormula`, {}, {
+      params: {
+        oldSku: oldSku,
+        newSku: newSku
+      }
+    }).then((res) => {
       return res.data
     })
   }
